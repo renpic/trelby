@@ -2332,7 +2332,10 @@ Generated with <a href="http://www.trelby.org">Trelby</a>.</p>
                 lb = ls[line].lb
 
                 if lb == LB_LAST:
-                    return True
+                    if ls[line].lt != SHOT:
+                        return True
+                    else:
+                        return False
 
                 elif lb == LB_SPACE:
                     char = " "

@@ -24,7 +24,7 @@ def main():
 
     (opts, args) = parser.parse_args()
 
-    if opts.file:
+    if opts.file and opts.func:
         return doTest(opts)
     else:
         return doTests(opts)
@@ -118,7 +118,10 @@ def doTests(opts):
 
     # FIXME: allow specifying which files to test
 
-    fnames = sorted(glob.glob("*.py"))
+    if not opts.file:
+        fnames = sorted(glob.glob("*.py"))
+    else:
+        fnames = [opts.file]
 
     for fname in fnames:
         flags = getFlags(fname)

@@ -29,4 +29,13 @@ def testNbspAtEOL():
     assert sp.lines[3].lb == scr.LB_SPACE
     assert sp.lines[4].lb == scr.LB_LAST
 
+def testNewlineAfterShot():
+    sp = u.new()
+    sp.cmdChars("This is a shot")
+    sp.cmd("toShot")
+    sp.cmd("splitElement")
+    sp.cmdChars("and this is the following line.")
+
+    assert sp.lines[1].text == "and this is the following line."
+
 # FIXME: lot more tests

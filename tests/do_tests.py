@@ -24,7 +24,7 @@ def main():
 
     (opts, args) = parser.parse_args()
 
-    if opts.file and opts.func:
+    if opts.file and (opts.func or opts.faat):
         return doTest(opts)
     else:
         return doTests(opts)
